@@ -15,3 +15,24 @@ One example of a genetic algorithm seen in nature is _camouflage_.  In nature, a
 In nature, _mutations_ sometimes occur which can either serve as a benefit or inhibitor to an organisms survivability.  This can be achieved in code by introducing a random chance to set a gene to a completely random value.
 
 A _fitness test_ determines which set of the population survives and which set dies.
+
+### Repo Scenes
+
+*Camouflage:* This scene generates colored persons on the screen which the user can click.  The algorithm uses the sequence of color selection to determine the next generations color.  The idea is to mimic how camouflage works in nature where creatures that can mimic their surroundings survive longer.
+
+*Maze:* This scene trains the agents to move through the maze as far as possible.  The agents have the ability to move in different directions with their gene and will prioritize movements that maximize how far they can go.
+
+*Movement:* This scene trains agents to stay on the extended platform by performing 1 of 6 movements types.  The result is that agents that move straight, crouch, or jump move through each generation.
+
+*Platformer:* This scene trains agents to perform actions that keep them on the platform.  The fitness function prioritizes actions that keep them on the platform and additionally rewards agents that travel further distance.
+
+*Flappy:* This scene trains agents to move through a Flappy Bird game by performing up down controls.  THe genes for the birds are length 5.  1: up, 2: down wall encountered, 3: top, 4: bottom, 5: default force when nothing is sensed.  The fitness function includes distance traveled which rewards birds that move through the maze and continue going.
+
+### Additonal Articles
+
+https://www.gamasutra.com/blogs/MichaelMartin/20110830/90109/Using_a_Genetic_Algorithm_to_Create_Adaptive_Enemy_AI.php
+
+http://rednuht.org/genetic_walkers/
+
+https://www.wired.com/2010/11/genetic-algorithms-starcraft/
+
