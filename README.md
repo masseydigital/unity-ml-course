@@ -36,3 +36,14 @@ http://rednuht.org/genetic_walkers/
 
 https://www.wired.com/2010/11/genetic-algorithms-starcraft/
 
+## Perceptrons
+
+The _perceptron_ is a fundamental algorithm behind the functioning of a neural network and attempts to model the functioning of a neuron.
+
+The act of learning in a neuron happens through _reinforcement_.  Positive behaviors strengthen the likeliness of firing and negative behaviors reduces the likeliness.
+
+A perceptron takes in inputs, multiplied by weights and an activation function to produce an output.  Learning occurs in the weight values.  An extra weight value called the _bias_ helps move the algorithm to its goal output.  
+
+The _activation function_ determines the output of the perceptron based on the weights and the inputs.  
+
+A _training set_ is produced to check the networks correctness.  Each output of the network is checked to the training set and produces an _Error_.  Each iteration through the training set is called an _Epoch_.
