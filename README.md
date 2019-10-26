@@ -50,6 +50,8 @@ A _training set_ is produced to check the networks correctness.  Each output of 
 
 A perceptron is considered to be a _binary classifier_ in that it can separate values into two areas of data.
 
+A single perceptron can not handle the XOR statement.  This is because there is not a good way to draw a line which can separate the two values.  IN future sections we will create more advanced networks which are able to mimic this functionality.
+
 ### Repo Scenes
 
 **_Perceptron:_** This scene shows the basic set-up for creating a Perceptron in Unity.  The perceptron is representing an OR gate, and after some iterations of training should mimic the output.
@@ -57,3 +59,34 @@ A perceptron is considered to be a _binary classifier_ in that it can separate v
 **_Classification:_** This scene shows how to set-up a classifier which buckets points into one type of object or another.  The scene will create a graph which lists all of the points in the training set and then draws a best fit line based on the output of the training.
 
 **_Learning:_** This scene shows how to change the Perceptron class to perform training while the scene is running.  In the scene, balls can be thrown using the 1,2,3,4 keys.  The scene is set-up so that the player learns to dodge red balls.  After a few iterations of throwing objects, the player should always duck only when a red ball is thrown.  You can also  use the "s" and "l" keys to save and load the current weights that have been trained.
+
+## Artificial Neural Networks
+
+Artificial Neural Networks (ANN) take the perceptrons (neurons) that we programmed in the previous section and links them together to create a network.  This is also referred to as _deep learning._
+
+In a ANN, networks are separated into 3 layers.  (1) Input Layer, (2) 1 or more Hidden Layers, (3) Output Layer.
+
+_Backpropogation_ is the process of taking the error in the output and pushing it back through the network to adjust the weights of the network.  
+
+ANNs are best suited for classification problems, data processing, robotics, computer controls, and statistical analysis.  In games, they are typically not used due to difficulty programming as well as un-predictable behavior.  An example of ANNs in action for games is Forza Horizon using it to simulate more realistic driving behavior.  
+
+An _Error Gradient_ is assigning an amount of error to a specific weight in a neuron.
+
+### FAQs
+
+**1. What activation function should I use?**
+The gradient of the error being backpropogated is the slope of the line used to calculate the error.  The step function cannot be used to calculate an XOR gate. The gradient of a line is its slope.  Flat lines have a gradient of 0 and straight up and down slopes have a gradient of infinity.  This is why we used the sigmoid function.  It has a nice gradient between -2 and 2.  Any neuron beyond that number will have trouble training.  This is called the _vanishing gradient_.
+
+Tanh is another nice function to use, and looks similar to the Sigmoid function, but with a steeper slope.
+
+ReLU (Rectified Linear Unit) is another good function to use for positive weights.  This is called a sparsely activated network.  It has no gradient below 0.
+
+Leaky ReLU has a slight slope in the negative direction.  This allows for some training below 0.  
+
+A common set-up for networks is to use ReLU or Leaky ReLU in the hidden layers and Sigmoid in the output layer.
+
+**2. How many layers do I need?**
+Each layer produces its feature boundary.  What this means is that each layer is focused on a specific feature that the network is learning.  If you don't know what features your network should be learning, it might be helpful to start with a layer and start to increase the number of hidden layers.
+
+**3. How many neurons do I need?**
+For the input layer you need as many neurons as there are inputs.  For the output layer you need as many output layer as there are inputs.  For the hidden layers a common technique to pick a value between the number of inputs and the number of outputs.  Another rule could be less than twice the number of neurons in the input layer.  If you do not have enough neurons in the hidden layer, your network will experience _underfitting_.  if you have too many neurons in the hidden layers, you will experience _overfitting_.  The problem with overfitting is that when new values are introduced in your system, they may not fit into the training buckets.
