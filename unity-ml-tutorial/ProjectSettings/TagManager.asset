@@ -6,6 +6,14 @@ TagManager:
   tags:
   - dead
   - platform
+  - wall
+  - upwall
+  - downwall
+  - bottom
+  - top
+  - tops
+  - ball
+  - backwall
   layers:
   - Default
   - TransparentFX
@@ -17,7 +25,7 @@ TagManager:
   - 
   - Ethans
   - Bot
-  - 
+  - Backwall
   - 
   - 
   - 

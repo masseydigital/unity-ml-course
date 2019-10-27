@@ -85,8 +85,27 @@ Leaky ReLU has a slight slope in the negative direction.  This allows for some t
 
 A common set-up for networks is to use ReLU or Leaky ReLU in the hidden layers and Sigmoid in the output layer.
 
+https://en.wikipedia.org/wiki/Activation_function
+
 **2. How many layers do I need?**
 Each layer produces its feature boundary.  What this means is that each layer is focused on a specific feature that the network is learning.  If you don't know what features your network should be learning, it might be helpful to start with a layer and start to increase the number of hidden layers.
 
 **3. How many neurons do I need?**
 For the input layer you need as many neurons as there are inputs.  For the output layer you need as many output layer as there are inputs.  For the hidden layers a common technique to pick a value between the number of inputs and the number of outputs.  Another rule could be less than twice the number of neurons in the input layer.  If you do not have enough neurons in the hidden layer, your network will experience _underfitting_.  if you have too many neurons in the hidden layers, you will experience _overfitting_.  The problem with overfitting is that when new values are introduced in your system, they may not fit into the training buckets.
+
+
+### Extra Readings
+
+http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.161.3556&rep=rep1&type=pdf
+
+https://jeremykun.com/2011/08/11/the-perceptron-and-all-the-things-it-cant-perceive/
+
+https://medium.com/the-theory-of-everything/understanding-activation-functions-in-neural-networks-9491262884e0
+
+### Repo Scenes
+
+**_Intro:_** This scene is the introduction to programming ANNs from scratch.  The example scene builds an XOR gate utilizing an ANN. 
+
+**_Pong_:** This scene trains a paddle utilizing an ANN.  Things that the player may consider when making a move is the Balls position, the Balls Direction & Speed, the Paddles position, and the Paddles velocity.  This translates to (6) inputs that can be adjusted - (1) Ball X, (2) Ball Y, (3) Ball Velocity X, (4) Ball Velocity Y, (5) Paddle X, and (6) Paddle Y.
+
+**_PongTwo:_** This scene pits the player against the AI.

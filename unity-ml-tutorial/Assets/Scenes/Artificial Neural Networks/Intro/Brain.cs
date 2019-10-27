@@ -16,7 +16,7 @@ namespace NeuralNet
 
             List<double> result;
 
-            for(int i=0; i<5000; i++)
+            for(int i=0; i<100000; i++)
             {
                 //Train an XOR operation
                 sumSquareError = 0;

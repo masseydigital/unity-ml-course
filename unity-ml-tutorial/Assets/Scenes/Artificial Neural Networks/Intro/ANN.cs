@@ -73,7 +73,15 @@ namespace NeuralNet
                     }
 
                     N -= layers[i].neurons[j].bias;
-                    layers[i].neurons[j].output = ActivationFunction(N);
+                    if(i == numHidden)
+                    {
+                        layers[i].neurons[j].output = ActivationFunctionO(N);
+                    }
+                    else
+                    {
+                        layers[i].neurons[j].output = ActivationFunction(N);
+                    }
+                    
                     outputs.Add(layers[i].neurons[j].output);
                 }
             }
@@ -134,6 +142,12 @@ namespace NeuralNet
         // see en.wikipedia.org/wiki/Activation_function
         public double ActivationFunction(double value)
         {
+            return ReLu(value);
+        }
+
+        //Output activation function
+        double ActivationFunctionO(double value)
+        {
             return Sigmoid(value);
         }
 
@@ -149,6 +163,25 @@ namespace NeuralNet
         {
             double k = (double)System.Math.Exp(value);
             return k / (1.0f + k);
+        }
+
+        // TanH allows us to return negative values
+        double TanH (double value)
+        {
+            return (2 * (Sigmoid(2 * value)) - 1);
+        }
+
+        double ReLu(double value)
+        {
+            if (value > 0) return value;
+            else return 0;
+        }
+
+
+        double LeakyReLu(double value)
+        {
+            if (value < 0) return 0.01 * value;
+            else return value;
         }
     }
 }
