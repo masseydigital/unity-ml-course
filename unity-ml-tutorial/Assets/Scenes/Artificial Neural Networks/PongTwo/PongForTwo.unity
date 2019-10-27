@@ -1663,6 +1663,11 @@ PrefabInstance:
       propertyPath: blop
       value: 
       objectReference: {fileID: 1246914068}
+    - target: {fileID: 114957481610792252, guid: e5f6e3ddbc4ed4066b1d8a6dea994aa4,
+        type: 3}
+      propertyPath: timeText
+      value: 
+      objectReference: {fileID: 1427622324}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5f6e3ddbc4ed4066b1d8a6dea994aa4, type: 3}
 --- !u!1 &1931475248

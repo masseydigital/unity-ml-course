@@ -78,7 +78,12 @@ public class ANN{
 					}
 
 					N -= layers[i].neurons[j].bias;
-					layers[i].neurons[j].output = AF(N);
+
+					if(i == numHidden)
+						layers[i].neurons[j].output = ActivationFunctionO(N);
+					else
+						layers[i].neurons[j].output = ActivationFunction(N);
+					
 					outputValues.Add(layers[i].neurons[j].output);
 					currentInput = 0;
 				}
@@ -97,6 +102,7 @@ public class ANN{
 				{
 					weightStr += w + ",";
 				}
+				weightStr += n.bias + ",";
 			}
 		}
 		return weightStr;
@@ -116,6 +122,8 @@ public class ANN{
 					n.weights[i] = System.Convert.ToDouble(weightValues[w]);
 					w++;
 				}
+				n.bias = System.Convert.ToDouble(weightValues[w]);
+				w++;
 			}
 		}
 	}
@@ -161,20 +169,32 @@ public class ANN{
 
 	}
 
-	double AF(double value)
+	double ActivationFunction(double value)
 	{
 		return TanH(value);
 	}
 
-	double Identity(double value)
+	double ActivationFunctionO(double value)
 	{
-		return value;
+		return TanH(value);
 	}
 
 	double TanH(double value)
 	{
 		double k = (double) System.Math.Exp(-2*value);
     	return 2 / (1.0f + k) - 1;
+	}
+
+	double ReLu(double value)
+	{
+		if(value > 0) return value;
+		else return 0;
+	}
+
+	double LeakyReLu(double value)
+	{
+		if(value < 0) return 0.01*value;
+   		else return value;
 	}
 
 	double Sigmoid(double value) 

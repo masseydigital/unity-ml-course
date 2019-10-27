@@ -72,6 +72,10 @@ ANNs are best suited for classification problems, data processing, robotics, com
 
 An _Error Gradient_ is assigning an amount of error to a specific weight in a neuron.
 
+_Normalization_ is the process of processing the data to make it more meaningful and manageable by the machine learning algorithms.  Normalization also brings the values of the inputs into ranges between 0 and 1.  This is useful because many of the activation functions given work best between 0 and 1.
+
+_Local Optima_ are low points in the error gradient that either trap the network into a shallow hole or skip over the lowest point for error.
+
 ### FAQs
 
 **1. What activation function should I use?**
@@ -109,3 +113,5 @@ https://medium.com/the-theory-of-everything/understanding-activation-functions-i
 **_Pong_:** This scene trains a paddle utilizing an ANN.  Things that the player may consider when making a move is the Balls position, the Balls Direction & Speed, the Paddles position, and the Paddles velocity.  This translates to (6) inputs that can be adjusted - (1) Ball X, (2) Ball Y, (3) Ball Velocity X, (4) Ball Velocity Y, (5) Paddle X, and (6) Paddle Y.
 
 **_PongTwo:_** This scene pits the player against the AI.
+
+**_Racer:_** This scene trains a neural network to allow for an AI car to drive around a track.  It does this by calculating the distance to the walls in front, directly to the sides, and at 45 degree angles to determine if it should move.  Once the network is training you can save the weights out and use them if your training was successful.  An optimal visibleDistance appears to be 50.0 - it seems like when I did 200 that the car didn't work.
