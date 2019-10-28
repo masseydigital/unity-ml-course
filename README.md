@@ -115,3 +115,41 @@ https://medium.com/the-theory-of-everything/understanding-activation-functions-i
 **_PongTwo:_** This scene pits the player against the AI.
 
 **_Racer:_** This scene trains a neural network to allow for an AI car to drive around a track.  It does this by calculating the distance to the walls in front, directly to the sides, and at 45 degree angles to determine if it should move.  Once the network is training you can save the weights out and use them if your training was successful.  An optimal visibleDistance appears to be 50.0 - it seems like when I did 200 that the car didn't work.
+
+## Reinforcement Learning and Q-Networks
+
+Reinforcement learning is used in life to train animals such as dogs.  Positive actions result in more likely performing an action and negative actions result in less likely to perform them.
+
+AI decisions can be modelled with state, action, and reward.  
+
+An _episode_ is a series of action-rewards that occur.  Negative reinforcement that happens later in an episode is less likely to affect actions made earlier in the episode.
+
+_Q-Learning_ maximizes the reward at the next state in the sequence diagram.  The Q stands for Quality.  The maximum reward (quality) is measured as the maximum reward at a given time.  Bellman's Equation is one equation to model this. 
+
+```math
+Q(s, a) = r + ymax(Q(s', a'))
+```
+
+We can only know the optimum reward for performing actions based on past events.  This events can be stored in a _Q-Table_.  A Q-Table is a 2-dimensional table that coorelates rewards to actions.  Tensorflow uses Q-Networks (neural networks) to create reward lookups.
+
+ Q-Networks can store a list of actions and the rewards associated with those actions.  This helps prevent the problem of local optima.  Q-Networks are considered greedy because they choose actions that are immediately better for them.
+
+_Exploration_ allows agents to take new actions that result in lower reward in order to test out down the chain to potential better actions.  In TensorFlow this is measured as the exploreRate.  Over time the network will start with a high rate of exploration and then eventually stick to known paths.
+
+As the problem space grows, Q-Networks can take days or weeks to train.  
+
+### Repo Scenes
+
+**_Ball Balancer:_**  This scene utilizes Q-Learning to balance a ball on a platform that can move in the X direction.  The inputs to the network are Platform X Rotation, Ball Z Position, and Ball X Angular Velocity.  Network outputs are Q(Platform -X Rotation) and Q(Platform X Rotation).
+
+### Extra Readings
+
+http://web.mst.edu/~gosavia/neural_networks_RL.pdf
+
+https://books.google.com.au/books?id=CAFR6IBF4xYC
+
+https://www.practicalai.io/teaching-a-neural-network-to-play-a-game-with-q-learning/
+
+https://medium.com/@tuzzer/follow-up-cart-pole-balancing-with-q-network-976d13f88d2f
+
+https://ai.intel.com/demystifying-deep-reinforcement-learning/
